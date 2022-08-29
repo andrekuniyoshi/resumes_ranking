@@ -20,17 +20,12 @@ import json
 
 # gensim lib
 import gensim
-from gensim.summarization.summarizer import summarize
-from gensim.summarization import keywords
 
 # for text processing
 import re
 import nltk
 from nltk.corpus import stopwords
 nltk.download('stopwords')
-nltk.download('wordnet')
-nltk.download('omw-1.4')
-nltk.download('punkt')
 
 # for vectorizer
 #from sklearn import feature_extraction, manifold
