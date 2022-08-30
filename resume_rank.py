@@ -179,17 +179,17 @@ st.subheader('Load Files')
 col1, col2, col3 = st.columns([1,1,1])
 with col1:
 	uploaded_job_desc = st.file_uploader("Choose Job Description file (json)")
-	if uploaded_job_desc is not None:
+# 	if uploaded_job_desc is not None:
 		# reading job description file (json)
 # 		df_job_desc = open(uploaded_job_desc)  	# opening job description file
-		df_job_desc = json.load(uploaded_job_desc)	# reading the file
-		df_job_desc = df_job_desc[0]		# once df_job_desc was in a list
+	df_job_desc = json.load(uploaded_job_desc)	# reading the file
+	df_job_desc = df_job_desc[0]		# once df_job_desc was in a list
 		
 with col2:
 	uploaded_resume = st.file_uploader("Choose a resumes file (csv")
-	if uploaded_resume is not None:
+# 	if uploaded_resume is not None:
 		# reading resumes
-		df_resumes = pd.read_csv(uploaded_resume)
+	df_resumes = pd.read_csv(uploaded_resume)
 
 with col3:
 	method = st.radio(
