@@ -261,39 +261,25 @@ if st.button('Click to see the ranking'):
 		df_resumes_copy = df_resumes.copy()
 		df_resumes_copy['resume_clean'] = txt_resume_clean
 		
-		st.write(df_resumes_copy)
-# ---------------------------------------------cosine similarity-----------------------------------------------------#
 
-# 		word_vectorizer = TfidfVectorizer()
 
-# 		percentages = []
-# 		for i in range(len(df_resumes)):                                          # loop for all resumes
-
-# 		  text_list = [df_resumes_copy['resume_clean'][i], txt]
-# 		  count_matrix = word_vectorizer.fit_transform(text_list)                 # getting tokens and frequencies
-
-# 		  # get the match percentage
-# 		  matchPercentage = round(cosine_similarity(count_matrix)[0][1] * 100, 2) # applying cosine similarity
-# 		  percentages.append(matchPercentage)
-
-# 		df_resumes_copy['percentages_Tfid_Transformed'] = percentages
-
-# 		df_resumes_copy = df_resumes.copy()
-# 		df_resumes_copy['resume_clean']
 # 	# ---------------------------------------------cosine similarity-----------------------------------------------------#
 
-# 		word_vectorizer = TfidfVectorizer()
+		word_vectorizer = TfidfVectorizer()
 
-# 		percentages = []
-# 		for i in range(len(df_resumes)):                                          # loop for all resumes
+		percentages = []
+		for i in range(len(df_resumes)):                                          # loop for all resumes
 
-# 		  text_list = [df_resumes_copy['resume_clean'][i], txt]
-# 		  count_matrix = word_vectorizer.fit_transform(text_list)                 # getting tokens and frequencies
+		  text_list = [df_resumes_copy['resume_clean'][i], txt]
+		  count_matrix = word_vectorizer.fit_transform(text_list)                 # getting tokens and frequencies
 
-# 		  # get the match percentage
-# 		  matchPercentage = round(cosine_similarity(count_matrix)[0][1] * 100, 2) # applying cosine similarity
-# 		  percentages.append(matchPercentage)
-
+		  # get the match percentage
+		  matchPercentage = round(cosine_similarity(count_matrix)[0][1] * 100, 2) # applying cosine similarity
+		  percentages.append(matchPercentage)
+		
+		st.write(percentages)
+		
+		
 # 		df_resumes_copy['percentages_Tfid_Transformed'] = percentages
 
 # 		df_resumes_pts = df_resumes_copy[['id', 'percentages_Tfid_Transformed']]
