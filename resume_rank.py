@@ -336,10 +336,15 @@ if st.button('Click to see the ranking'):
 							m_have.append(0)                                    # else, keep the value 0
 					df_resumes_pts[must_have] = m_have                          # create a column of 0 and 100 in df_resumes
 			j += 1
-		df_resumes_pts = df_resumes_pts.drop(df_resumes_pts.columns[0], axis=1)
-		df_resumes_pts['pts_total'] = df_resumes_pts.sum(axis=1)
+			
+		df_resumes_pt = df_resumes_pts.drop(df_resumes_pts.columns[0], axis=1)
+		df_resumes_pt['pts_total'] = df_resumes_pt.sum(axis=1)
+		positions = get_positions(df_resumes_pt,'pts_total')
+		df_resumes_final = df_resumes_pts.drop(df.columns[1:],axis=1)
+		df_resumes_final['rank'] = positions
+		
 		st.write(df_resumes_pts)
-
+		st.write(df_resumes_final)
 
 	elif method == 'Clean_Transformed_Resumes':
 		# creating a list of clean resumes
@@ -427,9 +432,15 @@ if st.button('Click to see the ranking'):
 							m_have.append(0)                                    # else, keep the value 0
 					df_resumes_pts[must_have] = m_have                          # create a column of 0 and 100 in df_resumes
 			j += 1
-		df_resumes_pts = df_resumes_pts.drop(df_resumes_pts.columns[0], axis=1)
-		df_resumes_pts['pts_total'] = df_resumes_pts.sum(axis=1)
+			
+		df_resumes_pt = df_resumes_pts.drop(df_resumes_pts.columns[0], axis=1)
+		df_resumes_pt['pts_total'] = df_resumes_pt.sum(axis=1)
+		positions = get_positions(df_resumes_pt,'pts_total')
+		df_resumes_final = df_resumes_pts.drop(df.columns[1:],axis=1)
+		df_resumes_final['rank'] = positions
+		
 		st.write(df_resumes_pts)
+		st.write(df_resumes_final)
 # else:
 # 	# creating a list of clean and transformed resumes (not only clean).
 # 	# Let's get similarities between resumes words and job description words.
