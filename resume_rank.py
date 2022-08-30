@@ -337,11 +337,11 @@ if st.button('Click to see the ranking'):
 				break
 			j += 1
 
-		df_resumes_final_ranking = df_resumes_pts[['id', 'percentages_Tfid_Transformed', 'business analyst', 'business process', 'stakeholder management']]
+		df_resumes_final_ranking = df_resumes_pts[['id', 'percentages_Tfid_Transformed', mh_1, mh_2, mh_3]]
 		df_resumes_final_ranking['final_score'] = df_resumes_final_ranking['percentages_Tfid_Transformed']+\
-							  df_resumes_final_ranking['business analyst']+\
-							  df_resumes_final_ranking['business process']+\
-							  df_resumes_final_ranking['stakeholder management']
+							  df_resumes_final_ranking[mh_1]+\
+							  df_resumes_final_ranking[mh_2]+\
+							  df_resumes_final_ranking[mh_3]
 		df_resumes_final_ranking['final_ranking'] = get_positions(df_resumes_final_ranking,'final_score')
 
 		# the final dataframe
