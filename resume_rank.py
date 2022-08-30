@@ -338,17 +338,18 @@ if st.button('Click to see the ranking'):
 			j += 1
 
 		df_resumes_final_ranking = df_resumes_pts[['id', 'percentages_Tfid_Transformed', mh_1, mh_2, mh_3]]
-		df_resumes_final_ranking['final_score'] = df_resumes_final_ranking['percentages_Tfid_Transformed']+\
-							  df_resumes_final_ranking[mh_1]+\
-							  df_resumes_final_ranking[mh_2]+\
-							  df_resumes_final_ranking[mh_3]
-		df_resumes_final_ranking['final_ranking'] = get_positions(df_resumes_final_ranking,'final_score')
+		st.write(df_resumes_final_ranking)
+# 		df_resumes_final_ranking['final_score'] = df_resumes_final_ranking['percentages_Tfid_Transformed']+\
+# 							  df_resumes_final_ranking[mh_1]+\
+# 							  df_resumes_final_ranking[mh_2]+\
+# 							  df_resumes_final_ranking[mh_3]
+# 		df_resumes_final_ranking['final_ranking'] = get_positions(df_resumes_final_ranking,'final_score')
 
-		# the final dataframe
-		df_ranking = df_resumes_final_ranking[['id','final_ranking']]
+# 		# the final dataframe
+# 		df_ranking = df_resumes_final_ranking[['id','final_ranking']]
 		
-		st.write(percentages)
-		st.write(df_ranking.sort_values('final_ranking', ascending=True))
+# 		st.write(percentages)
+# 		st.write(df_ranking.sort_values('final_ranking', ascending=True))
 	
 # else:
 # 	# creating a list of clean and transformed resumes (not only clean).
