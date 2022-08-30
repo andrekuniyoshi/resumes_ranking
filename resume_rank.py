@@ -12,8 +12,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-# connecting to Google Drive
-from google.colab import drive 
 
 # to read json file
 import json
