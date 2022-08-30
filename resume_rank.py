@@ -308,6 +308,7 @@ if st.button('Click to see the ranking'):
 				df_resumes_pts[must_have] = m_have                          # create a column of 0 and 100 in df_resumes
 				df_resumes_final_ranking = df_resumes_pts[['id', 'percentages_Tfid_Transformed', must_have]]
 				st.write(df_resumes_final_ranking)
+			j += 1
 
 # 			elif must_have_len == 2:
 # 				for i in range(len(df_resumes_copy)):                        # running for all resumes
