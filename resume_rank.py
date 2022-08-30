@@ -340,7 +340,7 @@ if st.button('Click to see the ranking'):
 		df_resumes_pt = df_resumes_pts.drop(df_resumes_pts.columns[0], axis=1)
 		df_resumes_pt['pts_total'] = df_resumes_pt.sum(axis=1)
 		positions = get_positions(df_resumes_pt,'pts_total')
-		df_resumes_final = df_resumes_pts.drop(df.columns[1:],axis=1)
+		df_resumes_final = df_resumes_pts.drop(df_resumes_pts.columns[1:],axis=1)
 		df_resumes_final['rank'] = positions
 		
 		st.write(df_resumes_pts)
@@ -436,7 +436,7 @@ if st.button('Click to see the ranking'):
 		df_resumes_pt = df_resumes_pts.drop(df_resumes_pts.columns[0], axis=1)
 		df_resumes_pt['pts_total'] = df_resumes_pt.sum(axis=1)
 		positions = get_positions(df_resumes_pt,'pts_total')
-		df_resumes_final = df_resumes_pts.drop(df.columns[1:],axis=1)
+		df_resumes_final = df_resumes_pts.drop(df_resumes_pts.columns[1:],axis=1)
 		df_resumes_final['rank'] = positions
 		
 		st.write(df_resumes_pts)
