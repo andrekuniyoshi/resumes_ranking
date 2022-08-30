@@ -277,7 +277,7 @@ if st.button('Click to see the ranking'):
 		  matchPercentage = round(cosine_similarity(count_matrix)[0][1] * 100, 2) # applying cosine similarity
 		  percentages.append(matchPercentage)
 		
-		st.write(percentages)
+
 		
 		
 		df_resumes_copy['percentages_Tfid_Transformed'] = percentages
@@ -347,6 +347,8 @@ if st.button('Click to see the ranking'):
 
 		# the final dataframe
 		df_ranking = df_resumes_final_ranking[['id','final_ranking']]
+		
+		st.write(percentages)
 		st.write(df_ranking.sort_values('final_ranking', ascending=True))
 	
 # else:
