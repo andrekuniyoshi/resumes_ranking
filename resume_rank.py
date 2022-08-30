@@ -42,7 +42,7 @@ import sklearn
 import pickle
 
 # importing a pre-trained GloVe model
-# nlp = gensim_api.load("glove-wiki-gigaword-300")
+nlp = gensim_api.load("glove-wiki-gigaword-300")
 
 # -------------------------------------- Cabeçalho -------------------------------------------------------#
 
