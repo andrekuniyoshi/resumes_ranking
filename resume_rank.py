@@ -242,24 +242,26 @@ if st.button('Click to see the ranking'):
 	
 # ------------------------------------------------------------------------------------------------------------------#
 # ---------------------------------------------Cleaning resumes-----------------------------------------------------#
-	# creating a list of clean resumes
-	txt_resume_clean = []
-	for i in range(len(df_resumes)):
-	  txt_resume = df_resumes[' resume_text'][i]
-	  txt_resume = utils_preprocess_text(txt_resume, flg_stemm=False, flg_lemm=True, lst_stopwords=lst_stopwords)
-	  txt_resume_clean.append(txt_resume)
+# 	# creating a list of clean resumes
+# 	txt_resume_clean = []
+# 	for i in range(len(df_resumes)):
+# 	  txt_resume = df_resumes[' resume_text'][i]
+# 	  txt_resume = utils_preprocess_text(txt_resume, flg_stemm=False, flg_lemm=True, lst_stopwords=lst_stopwords)
+# 	  txt_resume_clean.append(txt_resume)
 
-	st.write(txt_resume_clean)
-# 	if method == 'Clean_resumes':
-# 		# creating a list of clean resumes
-# 		txt_resume_clean = []
-# 		for i in range(len(df_resumes)):
-# 			txt_resume = df_resumes[' resume_text'][i]
-# 			txt_resume = utils_preprocess_text(txt_resume, flg_stemm=False, flg_lemm=True, lst_stopwords=lst_stopwords)
-# 			txt_resume_clean.append(txt_resume)
+	
+	if method == 'Clean_resumes':
+		# creating a list of clean resumes
+		txt_resume_clean = []
+		for i in range(len(df_resumes)):
+			txt_resume = df_resumes[' resume_text'][i]
+			txt_resume = utils_preprocess_text(txt_resume, flg_stemm=False, flg_lemm=True, lst_stopwords=lst_stopwords)
+			txt_resume_clean.append(txt_resume)
 
-# 		df_resumes_copy = df_resumes.copy()
-# 		df_resumes_copy['resume_clean']
+		df_resumes_copy = df_resumes.copy()
+		df_resumes_copy['resume_clean'] = txt_resume_clean
+		
+		st.write(df_resumes_copy)
 # ---------------------------------------------cosine similarity-----------------------------------------------------#
 
 # 		word_vectorizer = TfidfVectorizer()
