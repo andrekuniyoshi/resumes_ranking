@@ -183,7 +183,7 @@ with col1:
 		df_job_desc = df_job_desc[0]		# once df_job_desc was in a list
 		
 with col2:
-	uploaded_resume = st.file_uploader("Choose a file")
+	uploaded_resume = st.file_uploader("Choose a resumes file (csv")
 	if uploaded_resume is not None:
 		# reading resumes
 		df_resumes = pd.read_csv(uploaded_resume)
@@ -205,37 +205,42 @@ with col5:
 with col6:
 	mh_3 = st.text_input('Must have 3', '')
 
-# from the job description I defined these 3 must have expressions
-must_haves = []
-must_haves.append(mh_1)
-must_haves.append(mh_2)
-must_haves.append(mh_3)
+
+# -------------------------------------------------------------------------------------------------------------------------------#
+if st.button('Click to see the ranking'):
+
+	# from the job description I defined these 3 must have expressions
+	must_haves = []
+	must_haves.append(mh_1)
+	must_haves.append(mh_2)
+	must_haves.append(mh_3)
+	
 # -------------------------------------------------------------------------------------------------------------------------------#
 
 # ---------------------------------------------Cleaning Job Description-----------------------------------------------------#
-# creating the stop words list
-lst_stopwords = stopwords.words('english')
+	# creating the stop words list
+	lst_stopwords = stopwords.words('english')
 
-add_stop_words = ['62d1605026380b51d3762637'] # adding this string present in the job description
-for word in add_stop_words:
-  lst_stopwords.append(word)
+	add_stop_words = ['62d1605026380b51d3762637'] # adding this string present in the job description
+	for word in add_stop_words:
+	  lst_stopwords.append(word)
 
-# concatenating all values of job description
-# into one variable
-job_description_str = create_str_from_dict(df_job_desc)
+	# concatenating all values of job description
+	# into one variable
+	job_description_str = create_str_from_dict(df_job_desc)
 
-# applying the transformation in the job description string
-# for that I'm using the lemamtisation and the list of stop words just created
-txt = job_description_str
-txt = utils_preprocess_text(txt, flg_stemm=False, flg_lemm=True, lst_stopwords=lst_stopwords)
+	# applying the transformation in the job description string
+	# for that I'm using the lemamtisation and the list of stop words just created
+	txt = job_description_str
+	txt = utils_preprocess_text(txt, flg_stemm=False, flg_lemm=True, lst_stopwords=lst_stopwords)
 
 # ---------------------------------------------Cleaning resumes-----------------------------------------------------#
-# creating a list of clean resumes
-txt_resume_clean = []
-for i in range(len(df_resumes)):
-  txt_resume = df_resumes[' resume_text'][i]
-  txt_resume = utils_preprocess_text(txt_resume, flg_stemm=False, flg_lemm=True, lst_stopwords=lst_stopwords)
-  txt_resume_clean.append(txt_resume)
+	# creating a list of clean resumes
+	txt_resume_clean = []
+	for i in range(len(df_resumes)):
+	  txt_resume = df_resumes[' resume_text'][i]
+	  txt_resume = utils_preprocess_text(txt_resume, flg_stemm=False, flg_lemm=True, lst_stopwords=lst_stopwords)
+	  txt_resume_clean.append(txt_resume)
 
 # if method == 'Clean_resumes':
 # 	# creating a list of clean resumes
