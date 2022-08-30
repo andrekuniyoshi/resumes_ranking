@@ -184,14 +184,14 @@ with col1:
 # 		df_job_desc = open(uploaded_job_desc)  	# opening job description file
 		df_job_desc = json.load(uploaded_job_desc)	# reading the file
 		df_job_desc = df_job_desc[0]		# once df_job_desc was in a list
-		st.dataframe(df_job_desc)
+# 		st.dataframe(df_job_desc)
 	
 with col2:
 	uploaded_resume = st.file_uploader("Choose a resumes file (csv")
 	if uploaded_resume is not None:
 		# reading resumes
 		df_resumes = pd.read_csv(uploaded_resume)
-		st.dataframe(df_resumes)
+# 		st.dataframe(df_resumes)
 		
 with col3:
 	method = st.radio(
