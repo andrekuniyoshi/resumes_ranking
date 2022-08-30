@@ -24,6 +24,7 @@ import re
 import nltk
 from nltk.corpus import stopwords
 nltk.download('stopwords')
+nltk.download('wordnet')
 
 # for vectorizer
 #from sklearn import feature_extraction, manifold
