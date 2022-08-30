@@ -306,7 +306,7 @@ if st.button('Click to see the ranking'):
 				df_resumes_pts[must_have] = m_have                          # create a column of 0 and 100 in df_resumes
 
 			elif must_have_len == 2:
-		    		for i in range(len(df_resumes_copy)):                        # running for all resumes
+				for i in range(len(df_resumes_copy)):                        # running for all resumes
 					resume = df_resumes_copy['resume_clean_transformed'][i]    
 					coun_vect = CountVectorizer(ngram_range=(2, 2))       # creating values of 2 strings (2grams)
 					count_matrix = coun_vect.fit_transform([resume])      
