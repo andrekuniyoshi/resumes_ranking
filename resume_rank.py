@@ -284,28 +284,30 @@ if st.button('Click to see the ranking'):
 		st.write(df_resumes_copy)
 		st.write(df_resumes_pts)
 		
-# 		j = 0
-# 		for must_have in must_haves:
-# 		  #breakpoint = 0
+# -----------------------------------------------------MUST HAVE-----------------------------------------------------------#
+		
+		j = 0
+		for must_have in must_haves:
+		  #breakpoint = 0
 
-# 			m_have = []                                               # creating a list to keep values 0 or 100
-# 			must_have_len = len(must_haves[j].split())                # getting the length of the expressions
-# 			#if must_have_len == 0:
+			m_have = []                                               # creating a list to keep values 0 or 100
+			must_have_len = len(must_haves[j].split())                # getting the length of the expressions
+			#if must_have_len == 0:
 
-# 			if must_have_len == 1:
-# 				for i in range(len(df_resumes_copy)):                        # running for all resumes
-# 					resume = df_resumes_copy['resume_clean'][i]    
-# 					coun_vect = CountVectorizer(ngram_range=(1, 1))       # creating values of 1 string
-# 					count_matrix = coun_vect.fit_transform([resume])      
-# 					list_1grams_resume = coun_vect.get_feature_names()    # list of values from resume
+			if must_have_len == 1 and must_have != '':
+				for i in range(len(df_resumes_copy)):                        # running for all resumes
+					resume = df_resumes_copy['resume_clean'][i]    
+					coun_vect = CountVectorizer(ngram_range=(1, 1))       # creating values of 1 string
+					count_matrix = coun_vect.fit_transform([resume])      
+					list_1grams_resume = coun_vect.get_feature_names()    # list of values from resume
 
-# 					if pd.Series(must_have).isin(list_1grams_resume)[0]:  # in the case the must_have exists in the resume list
-# 						m_have.append(100)                                  # add value of 100
-# 					else:
-# 						m_have.append(0)                                    # else, keep the value 0
-# 				df_resumes_pts[must_have] = m_have                          # create a column of 0 and 100 in df_resumes
-# 				df_resumes_final_ranking = df_resumes_pts[['id', 'percentages_Tfid_Transformed', mh_1]]
-# 				st.write(df_resumes_final_ranking)
+					if pd.Series(must_have).isin(list_1grams_resume)[0]:  # in the case the must_have exists in the resume list
+						m_have.append(100)                                  # add value of 100
+					else:
+						m_have.append(0)                                    # else, keep the value 0
+				df_resumes_pts[must_have] = m_have                          # create a column of 0 and 100 in df_resumes
+				df_resumes_final_ranking = df_resumes_pts[['id', 'percentages_Tfid_Transformed', m_have]]
+				st.write(df_resumes_final_ranking)
 
 # 			elif must_have_len == 2:
 # 				for i in range(len(df_resumes_copy)):                        # running for all resumes
