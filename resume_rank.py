@@ -310,11 +310,11 @@ if st.button('Click to see the ranking'):
 			elif must_have_len == 2 and must_have != '':
 				for i in range(len(df_resumes_copy)):                        # running for all resumes
 					resume = df_resumes_copy['resume_clean'][i]    
-					coun_vect = CountVectorizer(ngram_range=(2, 2))       # creating values of 2 strings (2grams)
+					coun_vect = CountVectorizer(ngram_range=(1, 1))       # creating values of 2 strings (2grams)
 					count_matrix = coun_vect.fit_transform([resume])      
-					list_2grams_resume = coun_vect.get_feature_names()    # list of 2grams values from resume
+					list_1grams_resume = coun_vect.get_feature_names()    # list of 2grams values from resume
 
-					if pd.Series(must_have).isin(list_2grams_resume)[0]:  # in the case the must_have exists in the resume list of 2 grams
+					if pd.Series(must_have).isin(list_1grams_resume)[0]:  # in the case the must_have exists in the resume list of 2 grams
 						m_have.append(100)                                  # add value of 100
 					else:
 						m_have.append(0)                                    # else, keep the value 0
