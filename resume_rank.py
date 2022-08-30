@@ -179,18 +179,20 @@ st.subheader('Load Files')
 col1, col2, col3 = st.columns([1,1,1])
 with col1:
 	uploaded_job_desc = st.file_uploader("Choose Job Description file (json)")
-# 	if uploaded_job_desc is not None:
+ 	if uploaded_job_desc is not None:
 		# reading job description file (json)
 # 		df_job_desc = open(uploaded_job_desc)  	# opening job description file
-	df_job_desc = json.load(uploaded_job_desc)	# reading the file
-	df_job_desc = df_job_desc[0]		# once df_job_desc was in a list
-		
+		df_job_desc = json.load(uploaded_job_desc)	# reading the file
+		df_job_desc = df_job_desc[0]		# once df_job_desc was in a list
+		st.dataframe(df_job_desc)
+	
 with col2:
 	uploaded_resume = st.file_uploader("Choose a resumes file (csv")
-# 	if uploaded_resume is not None:
+ 	if uploaded_resume is not None:
 		# reading resumes
-	df_resumes = pd.read_csv(uploaded_resume)
-
+		df_resumes = pd.read_csv(uploaded_resume)
+		st.dataframe(df_resumes)
+		
 with col3:
 	method = st.radio(
 		"Choose preprocessing method",
@@ -237,8 +239,7 @@ if st.button('Click to see the ranking'):
 	txt = job_description_str
 	txt = utils_preprocess_text(txt, flg_stemm=False, flg_lemm=True, lst_stopwords=lst_stopwords)
 	
-	st.dataframe(df_job_desc)
-	st.dataframe(df_resumes)
+
 # ------------------------------------------------------------------------------------------------------------------#
 # ---------------------------------------------Cleaning resumes-----------------------------------------------------#
 # 	# creating a list of clean resumes
