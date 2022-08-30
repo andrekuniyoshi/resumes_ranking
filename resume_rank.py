@@ -236,7 +236,9 @@ if st.button('Click to see the ranking'):
 	# for that I'm using the lemamtisation and the list of stop words just created
 	txt = job_description_str
 	txt = utils_preprocess_text(txt, flg_stemm=False, flg_lemm=True, lst_stopwords=lst_stopwords)
-
+	
+	
+# ------------------------------------------------------------------------------------------------------------------#
 # ---------------------------------------------Cleaning resumes-----------------------------------------------------#
 	# creating a list of clean resumes
 	txt_resume_clean = []
@@ -245,116 +247,116 @@ if st.button('Click to see the ranking'):
 	  txt_resume = utils_preprocess_text(txt_resume, flg_stemm=False, flg_lemm=True, lst_stopwords=lst_stopwords)
 	  txt_resume_clean.append(txt_resume)
 
-# if method == 'Clean_resumes':
-# 	# creating a list of clean resumes
-# 	txt_resume_clean = []
-# 	for i in range(len(df_resumes)):
-# 		txt_resume = df_resumes[' resume_text'][i]
-# 		txt_resume = utils_preprocess_text(txt_resume, flg_stemm=False, flg_lemm=True, lst_stopwords=lst_stopwords)
-# 		txt_resume_clean.append(txt_resume)
-	
-# 	df_resumes_copy = df_resumes.copy()
-# 	df_resumes_copy['resume_clean']
-# # ---------------------------------------------cosine similarity-----------------------------------------------------#
-		
-# 	word_vectorizer = TfidfVectorizer()
+	if method == 'Clean_resumes':
+		# creating a list of clean resumes
+		txt_resume_clean = []
+		for i in range(len(df_resumes)):
+			txt_resume = df_resumes[' resume_text'][i]
+			txt_resume = utils_preprocess_text(txt_resume, flg_stemm=False, flg_lemm=True, lst_stopwords=lst_stopwords)
+			txt_resume_clean.append(txt_resume)
 
-# 	percentages = []
-# 	for i in range(len(df_resumes)):                                          # loop for all resumes
+		df_resumes_copy = df_resumes.copy()
+		df_resumes_copy['resume_clean']
+# ---------------------------------------------cosine similarity-----------------------------------------------------#
 
-# 	  text_list = [df_resumes_copy['resume_clean'][i], txt]
-# 	  count_matrix = word_vectorizer.fit_transform(text_list)                 # getting tokens and frequencies
+# 		word_vectorizer = TfidfVectorizer()
 
-# 	  # get the match percentage
-# 	  matchPercentage = round(cosine_similarity(count_matrix)[0][1] * 100, 2) # applying cosine similarity
-# 	  percentages.append(matchPercentage)
+# 		percentages = []
+# 		for i in range(len(df_resumes)):                                          # loop for all resumes
 
-# 	df_resumes_copy['percentages_Tfid_Transformed'] = percentages
-	
-# 	df_resumes_copy = df_resumes.copy()
-# 	df_resumes_copy['resume_clean']
-# # ---------------------------------------------cosine similarity-----------------------------------------------------#
-		
-# 	word_vectorizer = TfidfVectorizer()
+# 		  text_list = [df_resumes_copy['resume_clean'][i], txt]
+# 		  count_matrix = word_vectorizer.fit_transform(text_list)                 # getting tokens and frequencies
 
-# 	percentages = []
-# 	for i in range(len(df_resumes)):                                          # loop for all resumes
+# 		  # get the match percentage
+# 		  matchPercentage = round(cosine_similarity(count_matrix)[0][1] * 100, 2) # applying cosine similarity
+# 		  percentages.append(matchPercentage)
 
-# 	  text_list = [df_resumes_copy['resume_clean'][i], txt]
-# 	  count_matrix = word_vectorizer.fit_transform(text_list)                 # getting tokens and frequencies
+# 		df_resumes_copy['percentages_Tfid_Transformed'] = percentages
 
-# 	  # get the match percentage
-# 	  matchPercentage = round(cosine_similarity(count_matrix)[0][1] * 100, 2) # applying cosine similarity
-# 	  percentages.append(matchPercentage)
+# 		df_resumes_copy = df_resumes.copy()
+# 		df_resumes_copy['resume_clean']
+# 	# ---------------------------------------------cosine similarity-----------------------------------------------------#
 
-# 	df_resumes_copy['percentages_Tfid_Transformed'] = percentages
-		
-# 	df_resumes_pts = df_resumes_copy[['id', 'percentages_Tfid_Transformed']]
-# 	# for each must have expression
-# 	j = 0
-# 	for must_have in must_haves:
-# 	  #breakpoint = 0
+# 		word_vectorizer = TfidfVectorizer()
 
-# 	  m_have = []                                               # creating a list to keep values 0 or 100
-# 	  must_have_len = len(must_haves[j].split())                # getting the length of the expressions
-# 	  #if must_have_len == 0:
+# 		percentages = []
+# 		for i in range(len(df_resumes)):                                          # loop for all resumes
 
-# 	  if must_have_len == 1:
-# 	    for i in range(len(df_resumes_copy)):                        # running for all resumes
-# 	      resume = df_resumes_copy['resume_clean_transformed'][i]    
-# 	      coun_vect = CountVectorizer(ngram_range=(1, 1))       # creating values of 1 string
-# 	      count_matrix = coun_vect.fit_transform([resume])      
-# 	      list_1grams_resume = coun_vect.get_feature_names()    # list of values from resume
+# 		  text_list = [df_resumes_copy['resume_clean'][i], txt]
+# 		  count_matrix = word_vectorizer.fit_transform(text_list)                 # getting tokens and frequencies
 
-# 	      if pd.Series(must_have).isin(list_1grams_resume)[0]:  # in the case the must_have exists in the resume list
-# 		m_have.append(100)                                  # add value of 100
-# 	      else:
-# 		m_have.append(0)                                    # else, keep the value 0
-# 	    df_resumes_pts[must_have] = m_have                          # create a column of 0 and 100 in df_resumes
+# 		  # get the match percentage
+# 		  matchPercentage = round(cosine_similarity(count_matrix)[0][1] * 100, 2) # applying cosine similarity
+# 		  percentages.append(matchPercentage)
 
-# 	  elif must_have_len == 2:
-# 	    for i in range(len(df_resumes_copy)):                        # running for all resumes
-# 	      resume = df_resumes_copy['resume_clean_transformed'][i]    
-# 	      coun_vect = CountVectorizer(ngram_range=(2, 2))       # creating values of 2 strings (2grams)
-# 	      count_matrix = coun_vect.fit_transform([resume])      
-# 	      list_2grams_resume = coun_vect.get_feature_names()    # list of 2grams values from resume
+# 		df_resumes_copy['percentages_Tfid_Transformed'] = percentages
 
-# 	      if pd.Series(must_have).isin(list_2grams_resume)[0]:  # in the case the must_have exists in the resume list of 2 grams
-# 		m_have.append(100)                                  # add value of 100
-# 	      else:
-# 		m_have.append(0)                                    # else, keep the value 0
-# 	    df_resumes_pts[must_have] = m_have                          # create a column of 0 and 100 in df_resumes
+# 		df_resumes_pts = df_resumes_copy[['id', 'percentages_Tfid_Transformed']]
+# 		# for each must have expression
+# 		j = 0
+# 		for must_have in must_haves:
+# 		  #breakpoint = 0
 
-# 	  elif must_have_len == 3:
-# 	    for i in range(len(df_resumes_copy)):                          # running for all resumes
-# 	      resume = df_resumes_copy['resume_clean_transformed'][i]    
-# 	      coun_vect = CountVectorizer(ngram_range=(3, 3))       # creating values of 3 strings (3grams)
-# 	      count_matrix = coun_vect.fit_transform([resume])      
-# 	      list_3grams_resume = coun_vect.get_feature_names()    # list of 3grams values from resume
+# 		  m_have = []                                               # creating a list to keep values 0 or 100
+# 		  must_have_len = len(must_haves[j].split())                # getting the length of the expressions
+# 		  #if must_have_len == 0:
 
-# 	      if pd.Series(must_have).isin(list_3grams_resume)[0]:  # in the case the must_have exists in the resume list of 3 grams
-# 		m_have.append(100)                                  # add value of 100
-# 	      else:
-# 		m_have.append(0)                                    # else, keep the value 0
-# 	    df_resumes_pts[must_have] = m_have                          # create a column of 0 and 100 in df_resumes
+# 		  if must_have_len == 1:
+# 		    for i in range(len(df_resumes_copy)):                        # running for all resumes
+# 		      resume = df_resumes_copy['resume_clean_transformed'][i]    
+# 		      coun_vect = CountVectorizer(ngram_range=(1, 1))       # creating values of 1 string
+# 		      count_matrix = coun_vect.fit_transform([resume])      
+# 		      list_1grams_resume = coun_vect.get_feature_names()    # list of values from resume
 
-# 	  elif must_have_len > 3:
-# 	    df_resumes_pts = df_resumes_copy[['id', 'percentages_Count_Transformed', 'percentages_Tfid_Transformed']]
-# 	    print('Your must have expressions should have max 3 words')
-# 	    break
+# 		      if pd.Series(must_have).isin(list_1grams_resume)[0]:  # in the case the must_have exists in the resume list
+# 			m_have.append(100)                                  # add value of 100
+# 		      else:
+# 			m_have.append(0)                                    # else, keep the value 0
+# 		    df_resumes_pts[must_have] = m_have                          # create a column of 0 and 100 in df_resumes
 
-# 	  j += 1
-	
-# 	df_resumes_final_ranking = df_resumes_pts[['id', 'percentages_Tfid_Transformed', 'business analyst', 'business process', 'stakeholder management']]
-# 	df_resumes_final_ranking['final_score'] = df_resumes_final_ranking['percentages_Tfid_Transformed']+\
-# 						  df_resumes_final_ranking['business analyst']+\
-# 						  df_resumes_final_ranking['business process']+\
-# 						  df_resumes_final_ranking['stakeholder management']
-# 	df_resumes_final_ranking['final_ranking'] = get_positions(df_resumes_final_ranking,'final_score')
-	
-# 	# the final dataframe
-# 	df_ranking = df_resumes_final_ranking[['id','final_ranking']]
-# 	st.dataframe(df_ranking.sort_values('final_ranking', ascending=True))
+# 		  elif must_have_len == 2:
+# 		    for i in range(len(df_resumes_copy)):                        # running for all resumes
+# 		      resume = df_resumes_copy['resume_clean_transformed'][i]    
+# 		      coun_vect = CountVectorizer(ngram_range=(2, 2))       # creating values of 2 strings (2grams)
+# 		      count_matrix = coun_vect.fit_transform([resume])      
+# 		      list_2grams_resume = coun_vect.get_feature_names()    # list of 2grams values from resume
+
+# 		      if pd.Series(must_have).isin(list_2grams_resume)[0]:  # in the case the must_have exists in the resume list of 2 grams
+# 			m_have.append(100)                                  # add value of 100
+# 		      else:
+# 			m_have.append(0)                                    # else, keep the value 0
+# 		    df_resumes_pts[must_have] = m_have                          # create a column of 0 and 100 in df_resumes
+
+# 		  elif must_have_len == 3:
+# 		    for i in range(len(df_resumes_copy)):                          # running for all resumes
+# 		      resume = df_resumes_copy['resume_clean_transformed'][i]    
+# 		      coun_vect = CountVectorizer(ngram_range=(3, 3))       # creating values of 3 strings (3grams)
+# 		      count_matrix = coun_vect.fit_transform([resume])      
+# 		      list_3grams_resume = coun_vect.get_feature_names()    # list of 3grams values from resume
+
+# 		      if pd.Series(must_have).isin(list_3grams_resume)[0]:  # in the case the must_have exists in the resume list of 3 grams
+# 			m_have.append(100)                                  # add value of 100
+# 		      else:
+# 			m_have.append(0)                                    # else, keep the value 0
+# 		    df_resumes_pts[must_have] = m_have                          # create a column of 0 and 100 in df_resumes
+
+# 		  elif must_have_len > 3:
+# 		    df_resumes_pts = df_resumes_copy[['id', 'percentages_Count_Transformed', 'percentages_Tfid_Transformed']]
+# 		    print('Your must have expressions should have max 3 words')
+# 		    break
+
+# 		  j += 1
+
+# 		df_resumes_final_ranking = df_resumes_pts[['id', 'percentages_Tfid_Transformed', 'business analyst', 'business process', 'stakeholder management']]
+# 		df_resumes_final_ranking['final_score'] = df_resumes_final_ranking['percentages_Tfid_Transformed']+\
+# 							  df_resumes_final_ranking['business analyst']+\
+# 							  df_resumes_final_ranking['business process']+\
+# 							  df_resumes_final_ranking['stakeholder management']
+# 		df_resumes_final_ranking['final_ranking'] = get_positions(df_resumes_final_ranking,'final_score')
+
+# 		# the final dataframe
+# 		df_ranking = df_resumes_final_ranking[['id','final_ranking']]
+# 		st.dataframe(df_ranking.sort_values('final_ranking', ascending=True))
 	
 # else:
 # 	# creating a list of clean and transformed resumes (not only clean).
