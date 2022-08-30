@@ -285,6 +285,8 @@ if st.button('Click to see the ranking'):
 		df_resumes_pts = df_resumes_copy[['id', 'percentages_Tfid_Transformed']]
 		# for each must have expression
 			
+		st.write(df_resumes_copy)
+		st.write(df_resumes_pts)
 		
 		j = 0
 		for must_have in must_haves:
