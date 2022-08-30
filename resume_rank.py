@@ -296,7 +296,7 @@ if st.button('Click to see the ranking'):
 
 			if must_have_len == 1:
 				for i in range(len(df_resumes_copy)):                        # running for all resumes
-					resume = df_resumes_copy['resume_clean_transformed'][i]    
+					resume = df_resumes_copy['resume_clean'][i]    
 					coun_vect = CountVectorizer(ngram_range=(1, 1))       # creating values of 1 string
 					count_matrix = coun_vect.fit_transform([resume])      
 					list_1grams_resume = coun_vect.get_feature_names()    # list of values from resume
@@ -311,7 +311,7 @@ if st.button('Click to see the ranking'):
 
 			elif must_have_len == 2:
 				for i in range(len(df_resumes_copy)):                        # running for all resumes
-					resume = df_resumes_copy['resume_clean_transformed'][i]    
+					resume = df_resumes_copy['resume_clean'][i]    
 					coun_vect = CountVectorizer(ngram_range=(2, 2))       # creating values of 2 strings (2grams)
 					count_matrix = coun_vect.fit_transform([resume])      
 					list_2grams_resume = coun_vect.get_feature_names()    # list of 2grams values from resume
@@ -326,7 +326,7 @@ if st.button('Click to see the ranking'):
 
 			elif must_have_len == 3:
 				for i in range(len(df_resumes_copy)):                          # running for all resumes
-					resume = df_resumes_copy['resume_clean_transformed'][i]    
+					resume = df_resumes_copy['resume_clean'][i]    
 					coun_vect = CountVectorizer(ngram_range=(3, 3))       # creating values of 3 strings (3grams)
 					count_matrix = coun_vect.fit_transform([resume])      
 					list_3grams_resume = coun_vect.get_feature_names()    # list of 3grams values from resume
@@ -336,16 +336,14 @@ if st.button('Click to see the ranking'):
 					else:
 						m_have.append(0)                                    # else, keep the value 0
 				df_resumes_pts[must_have] = m_have                          # create a column of 0 and 100 in df_resumes
-				df_resumes_final_ranking = df_resumes_pts[['id', 'percentages_Tfid_Transformed', mh_1, mh_2, mh_3]]
+				df_resumes_final_ranking = df_resumes_pts[['id', 'resume_clean', mh_1, mh_2, mh_3]]
 				st.write(df_resumes_final_ranking)
 
 			elif must_have_len > 3:
-				df_resumes_pts = df_resumes_copy[['id', 'percentages_Count_Transformed', 'percentages_Tfid_Transformed']]
+				df_resumes_pts = df_resumes_copy[['id', 'percentages_Tfid_Transformed']]
 				print('Your must have expressions should have max 3 words')
 				break
-			else:
-				df_resumes_final_ranking = df_resumes_pts[['id', 'percentages_Tfid_Transformed']]
-				st.write(df_resumes_final_ranking)
+
 			j += 1
 
 		df_resumes_final_ranking = df_resumes_pts[['id', 'percentages_Tfid_Transformed', mh_1, mh_2, mh_3]]
