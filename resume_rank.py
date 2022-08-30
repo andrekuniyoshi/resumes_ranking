@@ -336,56 +336,11 @@ if st.button('Click to see the ranking'):
 							m_have.append(0)                                    # else, keep the value 0
 					df_resumes_pts[must_have] = m_have                          # create a column of 0 and 100 in df_resumes
 			j += 1
+		df_resumes_pts = df_resumes_pts.drop(df_resumes_pts.columns[0], axis=1)
+		df_resumes_pts['pts_total'] = df_resumes_pts.sum(axis=1)
 		st.write(df_resumes_pts)
 
-# 			elif must_have_len == 2 and must_have != '':
-# 				for i in range(len(df_resumes_copy)):                        # running for all resumes
-# 					resume = df_resumes_copy['resume_clean'][i]    
-# 					coun_vect = CountVectorizer(ngram_range=(1, 1))       # creating values of 2 strings (2grams)
-# 					count_matrix = coun_vect.fit_transform([resume])      
-# 					list_1grams_resume = coun_vect.get_feature_names()    # list of 2grams values from resume
 
-# 					if pd.Series(must_have).isin(list_1grams_resume)[0]:  # in the case the must_have exists in the resume list of 2 grams
-# 						m_have.append(100)                                  # add value of 100
-# 					else:
-# 						m_have.append(0)                                    # else, keep the value 0
-# 				df_resumes_pts[must_have] = m_have                          # create a column of 0 and 100 in df_resumes
-
-			
-# 			elif must_have_len == 3:
-# 				for i in range(len(df_resumes_copy)):                          # running for all resumes
-# 					resume = df_resumes_copy['resume_clean'][i]    
-# 					coun_vect = CountVectorizer(ngram_range=(1, 1))       # creating values of 3 strings (3grams)
-# 					count_matrix = coun_vect.fit_transform([resume])      
-# 					list_1grams_resume = coun_vect.get_feature_names()    # list of 3grams values from resume
-
-# 					if pd.Series(must_have).isin(list_1grams_resume)[0]:  # in the case the must_have exists in the resume list of 3 grams
-# 						m_have.append(100)                                  # add value of 100
-# 					else:
-# 						m_have.append(0)                                    # else, keep the value 0
-# 				df_resumes_pts[must_have] = m_have                          # create a column of 0 and 100 in df_resumes
-				
-			
-# 			elif must_have_len > 3:
-# 				df_resumes_pts = df_resumes_copy[['id', 'percentages_Tfid_Transformed']]
-# 				print('Your must have expressions should have max 3 words')
-# 				break
-
-# 			j += 1
-
-# 		df_resumes_final_ranking = df_resumes_pts[['id', 'percentages_Tfid_Transformed', mh_1, mh_2, mh_3]]
-# 		st.write(df_resumes_final_ranking)
-# 		df_resumes_final_ranking['final_score'] = df_resumes_final_ranking['percentages_Tfid_Transformed']+\
-# 							  df_resumes_final_ranking[mh_1]+\
-# 							  df_resumes_final_ranking[mh_2]+\
-# 							  df_resumes_final_ranking[mh_3]
-# 		df_resumes_final_ranking['final_ranking'] = get_positions(df_resumes_final_ranking,'final_score')
-
-# 		# the final dataframe
-# 		df_ranking = df_resumes_final_ranking[['id','final_ranking']]
-		
-# 		st.write(percentages)
-# 		st.write(df_ranking.sort_values('final_ranking', ascending=True))
 	
 # else:
 # 	# creating a list of clean and transformed resumes (not only clean).
