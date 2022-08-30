@@ -239,6 +239,7 @@ if st.button('Click to see the ranking'):
 	txt = job_description_str
 	txt = utils_preprocess_text(txt, flg_stemm=False, flg_lemm=True, lst_stopwords=lst_stopwords)
 	
+	st.write(txt)
 
 # ------------------------------------------------------------------------------------------------------------------#
 # ---------------------------------------------Cleaning resumes-----------------------------------------------------#
