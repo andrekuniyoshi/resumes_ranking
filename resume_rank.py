@@ -178,8 +178,8 @@ with col1:
 	uploaded_job_desc = st.file_uploader("Choose Job Description file (json)")
 	if uploaded_job_desc is not None:
 		# reading job description file (json)
-		df_job_desc = open(uploaded_job_desc)  	# opening job description file
-		df_job_desc = json.load(df_job_desc)	# reading the file
+# 		df_job_desc = open(uploaded_job_desc)  	# opening job description file
+		df_job_desc = json.load(uploaded_job_desc)	# reading the file
 		df_job_desc = df_job_desc[0]		# once df_job_desc was in a list
 		
 with col2:
