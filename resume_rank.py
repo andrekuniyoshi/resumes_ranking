@@ -293,7 +293,7 @@ if st.button('Click to see the ranking'):
 			m_have = []                                               # creating a list to keep values 0 or 100
 			must_have_len = len(must_haves)                # getting the length of the expressions
 			#if must_have_len == 0:
-
+			st.write(must_have_len)
 			if must_have_len == 1 and must_have != '':
 				for i in range(len(df_resumes_copy)):                        # running for all resumes
 					resume = df_resumes_copy['resume_clean'][i]    
