@@ -41,8 +41,6 @@ import streamlit as st
 import sklearn
 import pickle
 
-# importing a pre-trained GloVe model
-nlp = gensim_api.load("glove-wiki-gigaword-300")
 
 # -------------------------------------- Cabeçalho -------------------------------------------------------#
 
@@ -347,6 +345,9 @@ if st.button('Click to see the ranking'):
 		st.write(df_resumes_final)
 
 	elif method == 'Clean_Transformed_Resumes':
+		# importing a pre-trained GloVe model
+		nlp = gensim_api.load("glove-wiki-gigaword-300")
+		
 		# creating a list of clean resumes
 		txt_resume_clean = []
 		for i in range(len(df_resumes)):
