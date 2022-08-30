@@ -304,6 +304,8 @@ if st.button('Click to see the ranking'):
 					else:
 						m_have.append(0)                                    # else, keep the value 0
 				df_resumes_pts[must_have] = m_have                          # create a column of 0 and 100 in df_resumes
+				df_resumes_final_ranking = df_resumes_pts[['id', 'percentages_Tfid_Transformed', mh_1]]
+				st.write(df_resumes_final_ranking)
 
 			elif must_have_len == 2:
 				for i in range(len(df_resumes_copy)):                        # running for all resumes
@@ -317,6 +319,8 @@ if st.button('Click to see the ranking'):
 					else:
 						m_have.append(0)                                    # else, keep the value 0
 				df_resumes_pts[must_have] = m_have                          # create a column of 0 and 100 in df_resumes
+				df_resumes_final_ranking = df_resumes_pts[['id', 'percentages_Tfid_Transformed', mh_1, mh_2]]
+				st.write(df_resumes_final_ranking)
 
 			elif must_have_len == 3:
 				for i in range(len(df_resumes_copy)):                          # running for all resumes
@@ -330,15 +334,20 @@ if st.button('Click to see the ranking'):
 					else:
 						m_have.append(0)                                    # else, keep the value 0
 				df_resumes_pts[must_have] = m_have                          # create a column of 0 and 100 in df_resumes
+				df_resumes_final_ranking = df_resumes_pts[['id', 'percentages_Tfid_Transformed', mh_1, mh_2, mh_3]]
+				st.write(df_resumes_final_ranking)
 
 			elif must_have_len > 3:
 				df_resumes_pts = df_resumes_copy[['id', 'percentages_Count_Transformed', 'percentages_Tfid_Transformed']]
 				print('Your must have expressions should have max 3 words')
 				break
+			else:
+				df_resumes_final_ranking = df_resumes_pts[['id', 'percentages_Tfid_Transformed']]
+				st.write(df_resumes_final_ranking)
 			j += 1
 
-		df_resumes_final_ranking = df_resumes_pts[['id', 'percentages_Tfid_Transformed', mh_1, mh_2, mh_3]]
-		st.write(df_resumes_final_ranking)
+# 		df_resumes_final_ranking = df_resumes_pts[['id', 'percentages_Tfid_Transformed', mh_1, mh_2, mh_3]]
+# 		st.write(df_resumes_final_ranking)
 # 		df_resumes_final_ranking['final_score'] = df_resumes_final_ranking['percentages_Tfid_Transformed']+\
 # 							  df_resumes_final_ranking[mh_1]+\
 # 							  df_resumes_final_ranking[mh_2]+\
