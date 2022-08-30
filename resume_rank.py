@@ -176,7 +176,7 @@ st.subheader('Load Files')
 col1, col2, col3 = st.columns([1,1,1])
 with col1:
 	uploaded_job_desc = st.file_uploader("Choose Job Description file (json)")
-	if uploaded_file is not None:
+	if uploaded_job_desc is not None:
 		# reading job description file (json)
 		df_job_desc = open(uploaded_job_desc)  	# opening job description file
 		df_job_desc = json.load(df_job_desc)	# reading the file
@@ -184,7 +184,7 @@ with col1:
 		
 with col2:
 	uploaded_resume = st.file_uploader("Choose a file")
-	if uploaded_file is not None:
+	if uploaded_resume is not None:
 		# reading resumes
 		df_resumes = pd.read_csv(uploaded_resume)
 
