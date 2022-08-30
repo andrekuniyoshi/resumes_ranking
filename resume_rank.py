@@ -291,7 +291,7 @@ if st.button('Click to see the ranking'):
 		  #breakpoint = 0
 
 			m_have = []                                               # creating a list to keep values 0 or 100
-			must_have_len = len(must_haves[j].split())                # getting the length of the expressions
+			must_have_len = len(must_haves.split())                # getting the length of the expressions
 			#if must_have_len == 0:
 
 			if must_have_len == 1 and must_have != '':
