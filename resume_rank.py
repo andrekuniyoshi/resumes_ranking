@@ -248,7 +248,7 @@ if st.button('Click to see the ranking'):
 # 	  txt_resume_clean.append(txt_resume)
 
 	
-	if method == 'Clean_resumes':
+	if method == 'Clean_resumes (faster, but less accurate)':
 		# creating a list of clean resumes
 		txt_resume_clean = []
 		for i in range(len(df_resumes)):
@@ -342,14 +342,14 @@ if st.button('Click to see the ranking'):
 		df_resumes_final['rank'] = positions
 		
 		st.write(df_resumes_pts)
-# 		st.write('write')
-# 		st.write(df_resumes_final)
-# 		st.write('table')
-# 		st.table(df_resumes_final)
-# 		st.write('dataframe')
-# 		st.dataframe(df)
+		st.write('write')
+		st.write(df_resumes_final)
+		st.write('table')
+		st.table(df_resumes_final)
+		st.write('dataframe')
+		st.dataframe(df)
 
-	elif method == 'Clean_Transformed_Resumes':
+	elif method == 'Clean_Transformed_Resumes (lower, but more accurate - can take 15min)':
 		# importing a pre-trained GloVe model
 		nlp = gensim_api.load("glove-wiki-gigaword-300")
 		
