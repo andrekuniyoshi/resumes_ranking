@@ -342,6 +342,8 @@ if st.button('Click to see the ranking'):
 		df_resumes_final['rank'] = positions
 		
 		st.write(df_resumes_pts)
+		st.table(df_resumes_pts)
+		st.dataframe(df_resumes_pts)
 		st.write('write')
 		st.write(df_resumes_final)
 		st.write('table')
