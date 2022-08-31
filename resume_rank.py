@@ -342,12 +342,12 @@ if st.button('Click to see the ranking'):
 		df_resumes_final['rank'] = positions
 		
 		st.write(df_resumes_pts)
-		st.write('write')
-		st.write(df_resumes_final)
-		st.write('table')
-		st.table(df_resumes_final)
-		st.write('dataframe')
-		st.dataframe(df)
+# 		st.write('write')
+# 		st.write(df_resumes_final)
+# 		st.write('table')
+# 		st.table(df_resumes_final)
+# 		st.write('dataframe')
+# 		st.dataframe(df)
 
 	elif method == 'Clean_Transformed_Resumes':
 		# importing a pre-trained GloVe model
