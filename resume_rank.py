@@ -340,16 +340,14 @@ if st.button('Click to see the ranking'):
 		positions = get_positions(df_resumes_pt,'pts_total')
 		df_resumes_final = df_resumes_pts.drop(df_resumes_pts.columns[1:],axis=1)
 		df_resumes_final['rank'] = positions
-		
-		st.write(df_resumes_pts)
-		st.table(df_resumes_pts)
-		st.dataframe(df_resumes_pts)
-		st.write('write')
-		st.write(df_resumes_final)
-		st.write('table')
-		st.table(df_resumes_final)
-		st.write('dataframe')
-		st.dataframe(df_resumes_final)
+		col7, col8 = st.columns([1,1])
+		with col7:
+			st.write('All points of candidates')
+			st.dataframe(df_resumes_pts)
+		with col8:
+			st.write('Candidates ranking')
+			st.dataframe(df_resumes_final)
+			
 
 	elif method == 'Clean_Transformed_Resumes (lower, but more accurate - can take 15min)':
 		# importing a pre-trained GloVe model
@@ -458,9 +456,13 @@ if st.button('Click to see the ranking'):
 		positions = get_positions(df_resumes_pt,'pts_total')
 		df_resumes_final = df_resumes_pts.drop(df_resumes_pts.columns[1:],axis=1)
 		df_resumes_final['rank'] = positions
-		
-		st.write(df_resumes_pts)
-		st.write(df_resumes_final)
+		col7, col8 = st.columns([1,1])
+		with col7:
+			st.write('All points of candidates')
+			st.dataframe(df_resumes_pts)
+		with col8:
+			st.write('Candidates ranking')
+			st.dataframe(df_resumes_final)
 # else:
 # 	# creating a list of clean and transformed resumes (not only clean).
 # 	# Let's get similarities between resumes words and job description words.
