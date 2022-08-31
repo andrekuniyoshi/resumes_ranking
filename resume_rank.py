@@ -345,6 +345,9 @@ if st.button('Click to see the ranking'):
 		st.write(df_resumes_final)
 
 	elif method == 'Clean_Transformed_Resumes':
+		# importing a pre-trained GloVe model
+		nlp = gensim_api.load("glove-wiki-gigaword-300")
+		
 		# creating a list of clean and transformed resumes (not only clean).
 		# Let's get similarities between resumes words and job description words.
 		# If similarity >= 0.6, the word in the resume is replaced by the word in the job description
