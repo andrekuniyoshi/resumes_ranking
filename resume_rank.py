@@ -345,18 +345,27 @@ if st.button('Click to see the ranking'):
 		st.write(df_resumes_final)
 
 	elif method == 'Clean_Transformed_Resumes':
-		# importing a pre-trained GloVe model
-		nlp = gensim_api.load("glove-wiki-gigaword-300")
-		
-		# creating a list of clean resumes
-		txt_resume_clean = []
-		for i in range(len(df_resumes)):
-			txt_resume = df_resumes[' resume_text'][i]
-			txt_resume = utils_preprocess_text(txt_resume, flg_stemm=False, flg_lemm=True, lst_stopwords=lst_stopwords)
-			txt_resume_clean.append(txt_resume)
+		# creating a list of clean and transformed resumes (not only clean).
+		# Let's get similarities between resumes words and job description words.
+		# If similarity >= 0.6, the word in the resume is replaced by the word in the job description
 
+		txt_resume_clean = []
+		count_mods = []
+		for i in range(len(df_resumes)):
+			txt_resume = df_resumes[' resume_text'][i]                                      # get the text from resumes
+			txt_resume = utils_preprocess_text(txt_resume, flg_stemm=False,
+							   flg_lemm=True, lst_stopwords=lst_stopwords)  # cleaning the resumes strings
+
+			txt_split = txt.split()
+			txt_resume_split = txt_resume.split()
+			txt_resume_transformed, count_mod = transform_similars2(txt_resume_split,       # comparing and transforming by similarities
+								  txt_split)
+			txt_resume_transformed = ' '.join(txt_resume_transformed)                       # transforming in a only string again
+			count_mods.append(count_mod)                                                    # counting the number of words transformed
+			txt_resume_clean.append(txt_resume_transformed)
+			
 		df_resumes_copy = df_resumes.copy()
-		df_resumes_copy['resume_clean'] = txt_resume_clean
+		df_resumes_copy['resume_clean'] =  = txt_resume_clean
 		
 
 
