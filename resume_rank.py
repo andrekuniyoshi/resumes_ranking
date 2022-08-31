@@ -185,7 +185,7 @@ with col1:
 # 		st.dataframe(df_job_desc)
 	
 with col2:
-	uploaded_resume = st.file_uploader("Choose a resumes file (csv")
+	uploaded_resume = st.file_uploader("Choose a resumes file (csv)")
 	if uploaded_resume is not None:
 		# reading resumes
 		df_resumes = pd.read_csv(uploaded_resume)
@@ -194,7 +194,7 @@ with col2:
 with col3:
 	method = st.radio(
 		"Choose preprocessing method",
-		('Clean_resumes', 'Clean_Transformed_Resumes'))
+		('Clean_resumes (faster, but less accurate)', 'Clean_Transformed_Resumes (lower, but more accurate - can take 15min)'))
 
 # -------------------------------------------------------------------------------------------------------------------------------#
 st.subheader('"Must Have" experiences')
@@ -279,8 +279,8 @@ if st.button('Click to see the ranking'):
 		df_resumes_pts = df_resumes_copy[['id', 'percentages_Tfid_Transformed']]
 		# for each must have expression
 			
-		st.write(df_resumes_copy)
-		st.write(df_resumes_pts)
+# 		st.write(df_resumes_copy)
+# 		st.write(df_resumes_pts)
 		
 # -----------------------------------------------------MUST HAVE-----------------------------------------------------------#
 		
@@ -342,7 +342,12 @@ if st.button('Click to see the ranking'):
 		df_resumes_final['rank'] = positions
 		
 		st.write(df_resumes_pts)
+		st.write('write')
 		st.write(df_resumes_final)
+		st.write('table')
+		st.table(df_resumes_final)
+		st.write('dataframe')
+		st.dataframe(df)
 
 	elif method == 'Clean_Transformed_Resumes':
 		# importing a pre-trained GloVe model
