@@ -347,7 +347,7 @@ if st.button('Click to see the ranking'):
 		st.write('table')
 		st.table(df_resumes_final)
 		st.write('dataframe')
-		st.dataframe(df)
+		st.dataframe(df_resumes_final)
 
 	elif method == 'Clean_Transformed_Resumes (lower, but more accurate - can take 15min)':
 		# importing a pre-trained GloVe model
