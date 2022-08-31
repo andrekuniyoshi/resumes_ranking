@@ -217,7 +217,7 @@ if st.button('Click to see the ranking'):
 	must_haves.append(mh_1)
 	must_haves.append(mh_2)
 	must_haves.append(mh_3)
-	
+	must_haves = [x.lower() for x in must_haves]
 # -------------------------------------------------------------------------------------------------------------------------------#
 
 # ---------------------------------------------Cleaning Job Description-----------------------------------------------------#
