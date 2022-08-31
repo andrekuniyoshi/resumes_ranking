@@ -340,7 +340,7 @@ if st.button('Click to see the ranking'):
 		positions = get_positions(df_resumes_pt,'pts_total')
 		df_resumes_final = df_resumes_pts.drop(df_resumes_pts.columns[1:],axis=1)
 		df_resumes_final['rank'] = positions
-		col7, col8 = st.columns([1,1])
+		col7, col8 = st.columns([2,1])
 		with col7:
 			st.write('All points of candidates')
 			st.dataframe(df_resumes_pts)
@@ -456,7 +456,7 @@ if st.button('Click to see the ranking'):
 		positions = get_positions(df_resumes_pt,'pts_total')
 		df_resumes_final = df_resumes_pts.drop(df_resumes_pts.columns[1:],axis=1)
 		df_resumes_final['rank'] = positions
-		col7, col8 = st.columns([1,1])
+		col7, col8 = st.columns([2,1])
 		with col7:
 			st.write('All points of candidates')
 			st.dataframe(df_resumes_pts)
