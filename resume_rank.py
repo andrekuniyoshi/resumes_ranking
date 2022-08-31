@@ -365,7 +365,7 @@ if st.button('Click to see the ranking'):
 			txt_resume_clean.append(txt_resume_transformed)
 			
 		df_resumes_copy = df_resumes.copy()
-		df_resumes_copy['resume_clean'] =  = txt_resume_clean
+		df_resumes_copy['resume_clean'] = txt_resume_clean
 		
 
 
