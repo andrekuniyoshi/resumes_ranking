@@ -343,10 +343,10 @@ if st.button('Click to see the ranking'):
 		col7, col8 = st.columns([2,1])
 		with col7:
 			st.write('All points of candidates')
-			st.dataframe(df_resumes_pts, 100, 100)
+			st.dataframe(df_resumes_pts)
 		with col8:
 			st.write('Candidates ranking')
-			st.dataframe(df_resumes_final, 50, 100)
+			st.dataframe(df_resumes_final)
 			
 
 	elif method == 'Clean_Transformed_Resumes (lower, but more accurate - can take 15min)':
