@@ -194,7 +194,7 @@ with col2:
 with col3:
 	method = st.radio(
 		"Choose preprocessing method",
-		('Clean_resumes (faster, but less accurate)', 'Clean_Transformed_Resumes (lower, but more accurate - can take 15min)'))
+		('Clean_resumes (faster, but less accurate)', 'Clean_Transformed_Resumes (slower, but more accurate - can take 15min)'))
 
 # -------------------------------------------------------------------------------------------------------------------------------#
 st.subheader('"Must Have" experiences')
@@ -349,7 +349,7 @@ if st.button('Click to see the ranking'):
 			st.dataframe(df_resumes_final)
 			
 
-	elif method == 'Clean_Transformed_Resumes (lower, but more accurate - can take 15min)':
+	elif method == 'Clean_Transformed_Resumes (slower, but more accurate - can take 15min)':
 		# importing a pre-trained GloVe model
 		nlp = gensim_api.load("glove-wiki-gigaword-300")
 		
